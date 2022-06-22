@@ -1,3 +1,4 @@
+import React from "react"
 import Head from "next/head"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
@@ -6,8 +7,19 @@ import CategoriesPreview from "../components/CategoriesPreview"
 import MovieDetail from "../components/MovieDetail"
 import Image from "next/image"
 import styles from "../styles/Home.module.css"
+import axios from "axios"
 
 export default function Home() {
+  const api = axios.create({
+    baseURL: "https://api.themoviedb.org/3",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    params: {
+      api_key: process.env.API_KEY,
+    },
+  })
+
   return (
     <div>
       <Head>
@@ -18,9 +30,9 @@ export default function Home() {
 
       <Header />
 
-      <Trendring />
+      <Trendring api={api} />
 
-      <CategoriesPreview />
+      <CategoriesPreview api={api} />
 
       <section
         id="genericList"

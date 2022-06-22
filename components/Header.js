@@ -14,7 +14,7 @@ const Header = () => {
         } /* className="header_title header_title__categoryView inactive" */
         style={{ display: "none" }}
       >
-        Acción
+        Action
       </h1>
 
       <form id="searchForm" className={styles.header_searchForm}>

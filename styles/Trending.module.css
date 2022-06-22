@@ -1,0 +1,56 @@
+.trendingPreview_header {
+  padding: 0 24px;
+}
+
+.trendingPreview_container {
+  margin-top: 48px;
+}
+
+.trendingPreview_header,
+.categoriesPreview_title {
+  margin-bottom: 24px;
+}
+
+.movie_container {
+  cursor: pointer;
+}
+
+.movie_img {
+  border-radius: 8px;
+}
+
+/* Trending */
+.trendingPreview_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.trendingPreview_btn {
+  border-radius: 8px;
+  height: 32px;
+  width: 72px;
+}
+
+.trendingPreview_movieList {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  height: 241px;
+  padding-left: 24px;
+  padding-bottom: 16px;
+}
+
+.trendingPreview_movieList .movie_container {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.trendingPreview_movieList .movie_container .movie_img {
+  height: 225px;
+  min-height: 225px;
+  max-height: 225px;
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+}

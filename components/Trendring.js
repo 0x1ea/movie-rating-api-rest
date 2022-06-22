@@ -1,44 +1,18 @@
-import Head from "next/head"
-import Footer from "../components/Footer"
-import Header from "../components/Header"
-import Trendring from "../components/Trendring"
-import CategoriesPreview from "../components/CategoriesPreview"
-import MovieDetail from "../components/MovieDetail"
+import React from "react"
+import styles from "../styles/Trending.module.css"
 import Image from "next/image"
-import styles from "../styles/Home.module.css"
 
-export default function Home() {
+const Trendring = () => {
   return (
-    <div>
-      <Head>
-        <title>Movie Rating</title>
-        <meta name="description" content="Movie Rating App" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <section id="trendingPreview" className={styles.trendingPreview_container}>
+      <div className={styles.trendingPreview_header}>
+        <h2 className={styles.trendingPreview_title}>Tendencias</h2>
+        <button className={styles.trendingPreview_btn}>Ver más</button>
+      </div>
 
-      <Header />
-
-      <Trendring />
-
-      <CategoriesPreview />
-
-      <section
-        id="genericList"
-        className={styles.genericList_container}
-        style={{ display: "none" }}
-      >
+      <article className={styles.trendingPreview_movieList}>
         <div className={styles.movie_container}>
           <Image
-            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
-            className={styles.movie_img}
-            alt="Nombre de la película"
-            width={200}
-            height={300}
-          />
-        </div>
-
-        <div className={styles.movie_container}>
-          <imImageg
             src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
             className={styles.movie_img}
             alt="Nombre de la película"
@@ -56,10 +30,19 @@ export default function Home() {
             height={225}
           />
         </div>
-      </section>
 
-      <MovieDetail />
-      <Footer />
-    </div>
+        <div className={styles.movie_container}>
+          <Image
+            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
+            className={styles.movie_img}
+            alt="Nombre de la película"
+            width={150}
+            height={225}
+          />
+        </div>
+      </article>
+    </section>
   )
 }
+
+export default Trendring

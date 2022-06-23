@@ -37,14 +37,6 @@ const CategoriesPreview = ({ api }) => {
             </h3>
           </div>
         ))}
-
-        {/* 
-        <div className={styles.category_container}>
-          <h3 id="id14" className={styles.category_title}>
-            Acción
-          </h3>
-        </div> 
-        */}
       </article>
     </section>
   )

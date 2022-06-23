@@ -31,6 +31,7 @@ const Trendring = ({ api }) => {
               href={{
                 pathname: `/details/${movie.id}`,
                 query: {
+                  id: movie.id,
                   name: movie.original_title,
                   description: movie.overview,
                   rating: movie.vote_average,

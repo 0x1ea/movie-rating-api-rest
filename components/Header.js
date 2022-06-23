@@ -10,7 +10,7 @@ const Header = ({ title, formDisplay, headerContainer, titleText, image }) => {
       style={
         headerContainer === "header_container__long"
           ? {
-              backgroundImage: `url("https://image.tmdb.org/t/p/w300${image}")`,
+              backgroundImage: `url("https://image.tmdb.org/t/p/w500${image}")`,
             }
           : null
       }

@@ -1,34 +1,3 @@
-.header_container {
-  padding: 0 24px;
-}
-
-.trendingPreview_header {
-  padding: 0 24px;
-}
-.categoriesPreview_container {
-  padding: 0 24px;
-}
-
-.trendingPreview_container {
-  margin-top: 48px;
-}
-.categoriesPreview_container {
-  margin-top: 48px;
-}
-
-.trendingPreview_header,
-.categoriesPreview_title {
-  margin-bottom: 24px;
-}
-
-.movie_container {
-  cursor: pointer;
-}
-
-.movie_img {
-  border-radius: 8px;
-}
-
 .categoriesPreview_list,
 .categories_list {
   display: flex;
@@ -40,6 +9,7 @@
 /* Header */
 
 .header_container {
+  padding: 0 24px;
   padding-top: 40px;
 }
 

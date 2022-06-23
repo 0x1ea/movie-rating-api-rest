@@ -2,27 +2,37 @@ import React from "react"
 import Image from "next/image"
 import styles from "../styles/MovieDetail.module.css"
 import useApi from "../utils/useApi"
+import Link from "next/link"
 
-const MovieDetail = ({ name, description, rating, genres }) => {
+const MovieDetail = ({ id, name, description, rating, genres }) => {
   const { api } = useApi()
   const [myGenres, setMyGenres] = React.useState([])
+  const [movies, setMovies] = React.useState([])
 
-  const getGenres = async () => {
+  const getGenres = async (genres) => {
     const { data } = await api("/genre/movie/list")
     const allGenres = data.genres
     const myGenres = []
 
-    genres.map((genre) =>
-      allGenres.map((mbdGenre) => {
-        mbdGenre.id == genre && myGenres.push({ id: mbdGenre.id, name: mbdGenre.name })
-      })
-    )
+    genres.map((genre) => {
+      allGenres.map(
+        (mbdGenre) =>
+          mbdGenre.id == genre && myGenres.push({ id: mbdGenre.id, name: mbdGenre.name })
+      )
+    })
 
     setMyGenres(myGenres)
   }
 
+  const getRelatedMovies = async (id) => {
+    const { data } = await api(`/movie/${id}/recommendations`)
+    console.log(data.results)
+    setMovies(data.results)
+  }
+
   React.useEffect(() => {
-    getGenres()
+    getGenres(genres)
+    getRelatedMovies(id)
   }, [])
 
   return (
@@ -39,49 +49,43 @@ const MovieDetail = ({ name, description, rating, genres }) => {
             </h3>
           </div>
         ))}
-
-        {/* 
-        <div className={styles.category_container}>
-          <h3 id="id14" className={styles.category_title}>
-            Acción
-          </h3>
-        </div> 
-        */}
       </article>
 
       <article className={styles.relatedMovies_container}>
         <h2 className={styles.relatedMovies_title}>Películas similares</h2>
 
         <div className={styles.relatedMovies_scrollContainer}>
-          <div className={styles.movie_container}>
-            <Image
-              src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
-              className={styles.movie_img}
-              alt="Nombre de la película"
-              width={150}
-              height={225}
-            />
-          </div>
-
-          <div className={styles.movie_container}>
-            <Image
-              src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
-              className={styles.movie_img}
-              alt="Nombre de la película"
-              width={150}
-              height={225}
-            />
-          </div>
-
-          <div className={styles.movie_container}>
-            <Image
-              src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
-              className={styles.movie_img}
-              alt="Nombre de la película"
-              width={150}
-              height={225}
-            />
-          </div>
+          {movies.map((movie) => (
+            <div key={movie.id} className={styles.movie_container}>
+              <Link
+                href={{
+                  pathname: `/details/${movie.id}`,
+                  query: {
+                    id: movie.id,
+                    name: movie.original_title,
+                    description: movie.overview,
+                    rating: movie.vote_average,
+                    image: movie.poster_path,
+                    genres: movie.genre_ids,
+                  },
+                }}
+              >
+                <a>
+                  <Image
+                    src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+                    className={styles.movie_img}
+                    alt={movie.title}
+                    width={150}
+                    height={225}
+                    onClick={() => {
+                      getGenres(movie.genre_ids)
+                      getRelatedMovies(movie.id)
+                    }}
+                  />
+                </a>
+              </Link>
+            </div>
+          ))}
         </div>
       </article>
     </section>

@@ -1,3 +1,4 @@
+import Link from "next/link"
 import React from "react"
 import styles from "../styles/CategoriesPreview.module.css"
 
@@ -23,7 +24,17 @@ const CategoriesPreview = ({ api }) => {
         {categories.map((genre) => (
           <div key={genre.id} className={styles.category_container}>
             <h3 id={"id" + genre.id} className={styles.category_title}>
-              {genre.name}
+              <Link
+                href={{
+                  pathname: `/categories/${genre.name}`,
+                  query: {
+                    id: genre.id,
+                    name: genre.name,
+                  },
+                }}
+              >
+                <a>{genre.name}</a>
+              </Link>
             </h3>
           </div>
         ))}

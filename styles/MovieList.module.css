@@ -12,18 +12,16 @@
 
 /* Generic List (search, trending & category) */
 .genericList_container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  place-items: center;
+
   flex-wrap: wrap;
   padding: 32px 24px;
 }
 
-.genericList_container .movie_container {
-  display: inline-block;
-  width: 47.5%;
-}
-
-.genericList_container .movie_img {
-  width: 100%;
+.movie_container {
+  display: flex;
+  place-content: center;
 }

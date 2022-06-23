@@ -4,19 +4,10 @@ import Footer from "../components/Footer"
 import Header from "../components/Header"
 import Trendring from "../components/Trendring"
 import CategoriesPreview from "../components/CategoriesPreview"
-import axios from "axios"
+import { useApi } from "../utils/useApi"
 
 export default function Home() {
-  const api = axios.create({
-    baseURL: "https://api.themoviedb.org/3",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-    },
-    params: {
-      api_key: process.env.API_KEY,
-    },
-  })
-
+  const { api } = useApi()
   const title = ["none", "true", "none"]
 
   return (

@@ -7,7 +7,7 @@ import Head from "next/head"
 const Search = () => {
   const router = useRouter()
   const { value } = router.query
-  console.log(value)
+
   return (
     <div>
       <Head>

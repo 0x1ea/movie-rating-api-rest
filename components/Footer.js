@@ -1,7 +1,14 @@
 import React from "react"
-import styles from "../styles/Footer.module.css"
+import Link from "next/link"
 const Footer = () => {
-  return <footer>Hecho por @0x1ea</footer>
+  return (
+    <footer>
+      <p>Built by&nbsp;</p>
+      <Link href="https://twitter.com/leajesusg">
+        <a>@leajesusg</a>
+      </Link>
+    </footer>
+  )
 }
 
 export default Footer

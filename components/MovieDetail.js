@@ -1,35 +1,52 @@
 import React from "react"
 import Image from "next/image"
 import styles from "../styles/MovieDetail.module.css"
+import useApi from "../utils/useApi"
 
-const MovieDetail = ({ name, description, rating }) => {
+const MovieDetail = ({ name, description, rating, genres }) => {
+  const { api } = useApi()
+  const [myGenres, setMyGenres] = React.useState([])
+
+  const getGenres = async () => {
+    const { data } = await api("/genre/movie/list")
+    const allGenres = data.genres
+    const myGenres = []
+
+    genres.map((genre) =>
+      allGenres.map((mbdGenre) => {
+        mbdGenre.id == genre && myGenres.push({ id: mbdGenre.id, name: mbdGenre.name })
+      })
+    )
+
+    setMyGenres(myGenres)
+  }
+
+  React.useEffect(() => {
+    getGenres()
+  }, [])
+
   return (
-    <section
-      id="movieDetail"
-      className={styles.movieDetail_container} /* style={{ display: "none" }} */
-    >
+    <section id="movieDetail" className={styles.movieDetail_container}>
       <h1 className={styles.movieDetail_title}>{name}</h1>
       <span className={styles.movieDetail_score}>{rating}</span>
       <p className={styles.movieDetail_description}>{description}</p>
 
       <article className={styles.categories_list}>
-        <div className={styles.category_container}>
-          <h3 id="id28" className={styles.category_title}>
-            Romance
-          </h3>
-        </div>
+        {myGenres.map((genre) => (
+          <div key={genre.id} className={styles.category_container}>
+            <h3 id={"id" + genre.id} className={styles.category_title}>
+              {genre.name}
+            </h3>
+          </div>
+        ))}
 
-        <div className={styles.category_container}>
-          <h3 id="id16" className={styles.category_title}>
-            Drama
-          </h3>
-        </div>
-
+        {/* 
         <div className={styles.category_container}>
           <h3 id="id14" className={styles.category_title}>
             Acción
           </h3>
-        </div>
+        </div> 
+        */}
       </article>
 
       <article className={styles.relatedMovies_container}>

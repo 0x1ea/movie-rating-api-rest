@@ -9,7 +9,6 @@ const CategoriesPreview = ({ api }) => {
     const { data } = await api("/genre/movie/list")
     const categories = data.genres
     setCategories(categories)
-    console.log(categories)
   }
 
   React.useEffect(() => {

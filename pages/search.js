@@ -4,9 +4,25 @@ import Header from "../components/Header"
 import MovieList from "../components/MovieList"
 import { useRouter } from "next/router"
 import Head from "next/head"
+import useApi from "../utils/useApi"
 const Search = () => {
   const router = useRouter()
   const { value } = router.query
+  const { api } = useApi()
+  const [movies, setMovies] = React.useState([])
+
+  const getMoviesByQuery = async () => {
+    const { data } = await api("/search/movie", {
+      params: {
+        query: value,
+      },
+    })
+    setMovies(data.results)
+  }
+
+  React.useEffect(() => {
+    getMoviesByQuery()
+  }, [value])
 
   return (
     <div>
@@ -20,9 +36,9 @@ const Search = () => {
         title={[true, "true", "none"]}
         formDisplay={"true"}
         headerContainer={"header_container"}
-        titleText={value}
+        titleText={"Results for: " + value}
       />
-      <MovieList />
+      <MovieList movies={movies} />
       <Footer />
     </div>
   )

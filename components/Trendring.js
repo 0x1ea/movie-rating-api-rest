@@ -8,13 +8,13 @@ const Trendring = ({ api }) => {
 
   const getTrendingMoviesPreview = async () => {
     const { data } = await api("/trending/movie/day")
-    console.log(data.results)
     setMovies(data.results)
   }
 
   React.useEffect(() => {
     getTrendingMoviesPreview()
   }, [])
+
   return (
     <section className={styles.trendingPreview_container}>
       <div className={styles.trendingPreview_header}>
@@ -34,6 +34,8 @@ const Trendring = ({ api }) => {
                   name: movie.original_title,
                   description: movie.overview,
                   rating: movie.vote_average,
+                  image: movie.poster_path,
+                  genres: movie.genre_ids,
                 },
               }}
             >

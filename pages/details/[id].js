@@ -7,7 +7,7 @@ import Head from "next/head"
 
 const Details = () => {
   const router = useRouter()
-  const { name, description, rating } = router.query
+  const { name, description, rating, image, genres } = router.query
 
   return (
     <>
@@ -21,9 +21,10 @@ const Details = () => {
         title={["true", "none", "none"]}
         formDisplay={"none"}
         headerContainer={"header_container__long"}
+        image={image}
       />
-      <MovieDetail name={name} description={description} rating={rating} />
-      <Footer />
+      <MovieDetail name={name} description={description} rating={rating} genres={genres} />
+      {/* <Footer /> */}
     </>
   )
 }

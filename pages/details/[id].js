@@ -1,7 +1,6 @@
 import React from "react"
 import MovieDetail from "../../components/MovieDetail"
 import { useRouter } from "next/router"
-import Footer from "../../components/Footer"
 import Header from "../../components/Header"
 import Head from "next/head"
 

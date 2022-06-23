@@ -2,15 +2,15 @@ import React from "react"
 import Image from "next/image"
 import styles from "../styles/MovieDetail.module.css"
 
-const MovieDetail = () => {
+const MovieDetail = ({ name, description, rating }) => {
   return (
-    <section id="movieDetail" className={styles.movieDetail_container} style={{ display: "none" }}>
-      <h1 className={styles.movieDetail_title}>Deadpool</h1>
-      <span className={styles.movieDetail_score}>7.6</span>
-      <p className={styles.movieDetail_description}>
-        Wisecracking mercenary Deadpool battles the evil and powerful Cable and other bad guys to
-        save a boys life.
-      </p>
+    <section
+      id="movieDetail"
+      className={styles.movieDetail_container} /* style={{ display: "none" }} */
+    >
+      <h1 className={styles.movieDetail_title}>{name}</h1>
+      <span className={styles.movieDetail_score}>{rating}</span>
+      <p className={styles.movieDetail_description}>{description}</p>
 
       <article className={styles.categories_list}>
         <div className={styles.category_container}>

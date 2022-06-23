@@ -40,21 +40,3 @@
   width: 8px;
   height: 8px;
 }
-
-/* Generic List (search, trending & category) */
-.genericList_container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding: 32px 24px;
-}
-
-.genericList_container .movie_container {
-  display: inline-block;
-  width: 47.5%;
-}
-
-.genericList_container .movie_img {
-  width: 100%;
-}

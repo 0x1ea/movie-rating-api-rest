@@ -63,3 +63,46 @@
   min-height: 187.5px;
   max-height: 187.5px;
 }
+
+/* Categories */
+
+.categoriesPreview_title {
+  margin-bottom: 24px;
+}
+.categoriesPreview_container {
+  padding: 0 24px;
+}
+
+.categoriesPreview_container {
+  margin-top: 48px;
+}
+.categoriesPreview_list,
+.categories_list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  flex-wrap: wrap;
+}
+.category_container {
+  width: 45%;
+}
+
+.category_title {
+  margin-bottom: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.category_title::before {
+  content: "••••";
+  color: transparent;
+  /* TODO: cambiar color por ID de la categoría */
+  background-color: var(--idColor);
+  border-radius: 8px;
+  margin-right: 8px;
+  width: 8px;
+  height: 8px;
+}

@@ -4,9 +4,6 @@ import Footer from "../components/Footer"
 import Header from "../components/Header"
 import Trendring from "../components/Trendring"
 import CategoriesPreview from "../components/CategoriesPreview"
-import MovieDetail from "../components/MovieDetail"
-import Image from "next/image"
-import styles from "../styles/Home.module.css"
 import axios from "axios"
 
 export default function Home() {
@@ -20,6 +17,8 @@ export default function Home() {
     },
   })
 
+  const title = ["none", "true", "none"]
+
   return (
     <div>
       <Head>
@@ -28,49 +27,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
+      <Header title={title} formDisplay={"true"} headerContainer={"header_container"} />
 
       <Trendring api={api} />
+      {/* <MovieDetail /> */}
 
       <CategoriesPreview api={api} />
 
-      <section
-        id="genericList"
-        className={styles.genericList_container}
-        style={{ display: "none" }}
-      >
-        <div className={styles.movie_container}>
-          <Image
-            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
-            className={styles.movie_img}
-            alt="Nombre de la película"
-            width={200}
-            height={300}
-          />
-        </div>
-
-        <div className={styles.movie_container}>
-          <imImageg
-            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
-            className={styles.movie_img}
-            alt="Nombre de la película"
-            width={150}
-            height={225}
-          />
-        </div>
-
-        <div className={styles.movie_container}>
-          <Image
-            src="https://image.tmdb.org/t/p/w300/adOzdWS35KAo21r9R4BuFCkLer6.jpg"
-            className={styles.movie_img}
-            alt="Nombre de la película"
-            width={150}
-            height={225}
-          />
-        </div>
-      </section>
-
-      <MovieDetail />
       <Footer />
     </div>
   )
